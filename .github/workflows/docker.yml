@@ -17,7 +17,7 @@ env:
 
 jobs:
   docker:
-    name: Build docker image and docker push
+    name: Build docker image and push to Dockerhub
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@master
