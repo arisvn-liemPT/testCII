@@ -1,0 +1,12 @@
+
+target/classes/META-INF/MANIFEST.MF
+
+target/classes/META-INF/maven/org.example/TestCII/pom.properties
+
+target/classes/META-INF/maven/org.example/TestCII/pom.xml
+
+target/classes/testcii/Compute.class
+
+target/classes/testcii/main.class
+
+target/test-classes/testcii/ComputeTest.class
