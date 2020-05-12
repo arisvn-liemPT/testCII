@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+
+  testci:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPOSITORY}:v${VERSION}-${MINOR_VERSION}
