@@ -14,7 +14,7 @@ FROM openjdk:11
 WORKDIR /root
 		
 COPY --from=testCII-build \
-		/testCI/target/TestCII-1.0-SNAPSHOT.jar \
+		/testCII/target/TestCII-1.0-SNAPSHOT.jar \
 		/root/testCII.jar
 
 

@@ -6,7 +6,7 @@ name: Run Maven Test
 
 on:
   push:
-    branches: [pliem1991-patch-1, master]
+    branches: [master]
 
 jobs:
   build:
