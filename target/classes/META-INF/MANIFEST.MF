@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Built-By: Liem.pt
-Class-Path: lib/jmockit-1.44.jar lib/jsr305-3.0.2.jar
-Build-Jdk: 1.8.0_251
-Created-By: Maven Integration for Eclipse
-Main-Class: testci.main
-
