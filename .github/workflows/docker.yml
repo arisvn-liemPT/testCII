@@ -1,0 +1,37 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Docker CII
+
+on:
+  push:
+    tags:
+      - '*'
+env:
+  VERSION: 2.0
+  MODULE_NAME: "testcii"
+  DOCKER_REPOSITORY: "gaucuhanh/testcii_github"
+  DOCKER_HUB_EMAIL: ${{ secrets.DOCKER_HUB_EMAIL }}
+  DOCKER_HUB_USER_NAME: ${{ secrets.DOCKER_HUB_USER_NAME }}
+  DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+jobs:
+  docker:
+    name: Build docker image and docker push
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set env variable of version
+        run: |
+          if [[ ${GITHUB_REF} == refs/tags/* ]]; then
+            echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
+          fi
+          echo ::set-env name=MINOR_VERSION::${GITHUB_SHA:0:4}
+      - name: Build docker-compose
+        run: |
+          docker-compose -f docker/${MODULE_NAME}.yml build
+      - name: Push Docker image to Dockerhub
+        run: |
+          echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USER_NAME" --password-stdin;
+          docker-compose -f docker/${MODULE_NAME}.yml push
